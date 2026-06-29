@@ -1,0 +1,9 @@
+export type Role = 'superadmin' | 'committee' | 'itadmin' | 'custodian' | 'faculty' | 'student';
+export type User = { id: string; name: string; email: string; role: Role; active: boolean };
+export type Material = { id: string; title: string; author: string; year: number; category: string; description: string; accessLevel: 1 | 2 | 3; keywords: string[] };
+export type MaterialCopy = { id: string; materialId: string; format: 'physical' | 'digital'; label: string; available: boolean };
+export type RequestStatus = 'pending' | 'approved' | 'rejected' | 'cancelled' | 'returned';
+export type AccessRequest = { id: string; userId: string; materialId: string; copyId: string; format: 'physical' | 'digital'; status: RequestStatus; requestedAt: string; decidedAt?: string; note?: string };
+export type AuditEntry = { id: string; actorId: string; action: string; detail: string; createdAt: string };
+export type Notification = { id: string; userId: string; message: string; read: boolean; createdAt: string };
+export type AppState = { version: 1; users: User[]; materials: Material[]; copies: MaterialCopy[]; requests: AccessRequest[]; audit: AuditEntry[]; notifications: Notification[] };
